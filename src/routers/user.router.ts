@@ -11,9 +11,9 @@ import validationsEnforceMiddleware from "../middlewares/validations-enforce.mid
 const userRouter = Router() 
 
 /**
- * @swagger
- * /user/{id}:
- *   get:
+ * @openapi
+ * '/user/{id}':
+ *  get:
  *     summary: Obtener usuario por id
  *     description: End point para poder obtener los datos de un usuario mediante ID
  *     responses:
@@ -45,8 +45,8 @@ const userRouter = Router()
 userRouter.get('/user/:id', [ authenticationMiddleware ], getUserHandler)
 
 /**
- * @swagger
- * /user/{id}:
+ * @openapi
+ * '/user/{id}':
  *   put:
  *     summary: Actualizar usuario por ID
  *     description: End point que actualiza los datos del usuario mediante ID
@@ -82,8 +82,8 @@ userRouter.get('/user/:id', [ authenticationMiddleware ], getUserHandler)
 userRouter.put('/user/:id', [ authenticationMiddleware, validationsEnforceMiddleware(userSchema) ], putUserHandler)
 
 /**
- * @swagger
- * /user:
+ * @openapi
+ * '/user':
  *   post:
  *     summary: Crear un usuario nuevo
  *     description: End point que permite realizar un registro nuevo de usuario
@@ -136,8 +136,8 @@ userRouter.put('/user/:id', [ authenticationMiddleware, validationsEnforceMiddle
 userRouter.post('/user', [ authenticationMiddleware, validationsEnforceMiddleware(userSchema) ], postUserHandler)
 
 /**
- * @swagger
- * /user/{id}:
+ * @openapi
+ * '/user/{id}':
  *   delete:
  *     summary: Borrar un usuario por ID
  *     description: End point que nos permite borrar un usuario mediante ID
