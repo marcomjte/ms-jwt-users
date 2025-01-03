@@ -3,8 +3,7 @@ import cors from 'cors'
 import helmet from "helmet";
 import errorHandler from "../middlewares/error-handler.middleware"
 import userRouter from "../routers/user.router"
-const swaggerUi = require('swagger-ui-express')
-const swaggerDocument = require('./../swagger')
+import swaggerDocument from './../swagger'
 import { urlencoded } from 'body-parser'
 import path from 'path'
 
@@ -27,7 +26,7 @@ const setupExpressApp = () => {
   app.use(express.json())
 
   app.use('/', userRouter)
-  app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+	swaggerDocument(app, 3001)
     
   app.use(errorHandler)
   
